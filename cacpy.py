@@ -38,7 +38,6 @@ class API() :
   def listtasks(self) :
     payload = { 'key':self.key, 'login':self.login }
     ret = requests.get("{:s}/{:s}/{:s}".format(self.api_url, self.version, "listtasks.php"), params=payload)
-    print ret.text
     ret_obj = json.loads(ret.text)
     if ret.status_code != 200 :
       raise Exception("{:d} {:s}".format(ret.status_code, ret_obj["error_description"]))
